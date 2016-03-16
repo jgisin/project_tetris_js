@@ -13,7 +13,7 @@ block.BlockConstructor = function(x, y) {
   this.size = config.size;
   this.placed = false;
   this.dir = "";
-  this.currentOrient = 0;
+  this.currentOrient = 1;
   var that = this;
   this.nextOrientation = function(dir) {
     if (dir === "clockwise") {
@@ -29,9 +29,9 @@ block.BlockConstructor = function(x, y) {
     var nextOrient = that.nextOrientation(that.dir);
     for (var i = 0; i < that.blocks.length; i++) {
       currentBlock = that.blocks[i];
-      currentBlock.coord.x += that.orient(nextOrient)[i][0] * that.size;
-      currentBlock.coord.y += that.orient(nextOrient)[i][1] * that.size;
-      console.log(currentBlock.coord.x, currentBlock.coord.y);
+        currentBlock.coord.x += that.orient(nextOrient)[i][0] * that.size;
+        currentBlock.coord.y += that.orient(nextOrient)[i][1] * that.size;
+        console.log(that.currentOrient);
     }
   };
 };
@@ -43,7 +43,7 @@ block.LLeftShapeConstructor = function(x, y) {
   // this.rotate90 = [[2, 1],[0,1],[-1,-1],[-1,2]];
   // this.rotate180 = [[0,2],[0,1],[0,0],[-1,0]];
   // this.rotate270 = [[-1,1],[0,1],[1,1],[1,0]];
-  this.rotate0 = [[1,1], [0,0], [-1,-1], [-2, 0]];
+  this.rotate0To90 = [[1,1], [0,0], [-1,-1], [-2, 0]];
   this.rotate90 = [[-1,1], [0,0], [1, -1], [0, -2]];
   this.rotate180 = [[-1,-1], [0,0], [1, 1], [2, 0]];
   this.rotate270 = [[1,-1], [0,0], [-1, 1], [0, 2]];
@@ -66,18 +66,34 @@ block.LLeftShapeConstructor = function(x, y) {
 
   var that = this;
   this.orient = function(rotate){
-    switch(rotate){
-      case 1:
-      return that.rotate0;
+    if (that.dir === "clockwise"){
+      switch(rotate){
+        case 1:
+        return that.rotate0;
 
-      case 2:
-      return that.rotate90;
+        case 2:
+        return that.rotate90;
 
-      case 3:
-      return that.rotate180;
+        case 3:
+        return that.rotate180;
 
-      case 4:
-      return that.rotate270;
+        case 4:
+        return that.rotate270;
+      }
+    }else{
+      switch(rotate){
+        case 1:
+        return that.rotate180;
+
+        case 2:
+        return that.rotate270;
+
+        case 3:
+        return that.rotate0;
+
+        case 4:
+        return that.rotate90;
+      }
     }
   };
 };
