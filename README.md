@@ -1,2 +1,3 @@
-# project_tetris_js
-block based gaming
+# Tetris
+
+Deployed and playable [TETRIS](www.jgisin-tetris.surge.sh)

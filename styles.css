@@ -2,8 +2,28 @@
   display: block;
   margin: 0 auto;
   text-align: center;
+
 }
 
 #canvas {
-  background: grey;
+  background-image: url('assets/bak.png');
+  border: 2px solid black;
+}
+
+.score {
+  position: absolute;
+  top: 50px;
+  left: 1150px
+  font-family: arial;
+  font-size: 24px;
+  color: white;
+}
+
+#score {
+  position: relative;
+}
+
+html{
+  background-image: url('assets/tetris.png');
+  background-position: center;
 }
