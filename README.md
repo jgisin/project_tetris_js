@@ -1,3 +1,3 @@
 # Tetris
 
-Deployed and playable [TETRIS](www.jgisin-tetris.surge.sh)
+Deployed and playable [TETRIS](http://www.jgisin-tetris.surge.sh)
